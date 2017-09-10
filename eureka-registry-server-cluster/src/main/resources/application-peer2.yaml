@@ -1,0 +1,31 @@
+server:
+  port: 9092
+management:
+  port: 10092
+  context-path: '/24292b87-5495-4c76-9d2d-70d75c561e72'
+  security:
+    enabled: false
+eureka:
+  instance:
+    #这里注意修改host文件,添加127.0.0.1 eureka-registry-server-peer2和127.0.0.1 eureka-registry-server-peer1
+    hostname: eureka-registry-server-peer2
+    prefer-ip-address: false
+    metadata-map:
+       cluster: throwable:eureka-registry-server
+       management:
+           port: ${management.port}
+           context-path: ${management.context-path}
+           health:
+             path: ${management.context-path}/health
+    status-page-url-path: /info
+    health-check-url-path: /health
+  client:
+    service-url:
+      defaultZone: 'http://eureka-registry-server-peer1:9091/eureka/'
+    fetch-registry: true
+    register-with-eureka: true
+  server:
+    renewal-percent-threshold: '0.8'
+spring:
+  application:
+    name: 'eureka-registry-server'

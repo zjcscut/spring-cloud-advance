@@ -1,0 +1,32 @@
+server:
+  port: 9091
+management:
+  port: 10091
+  context-path: '/c88163fc-0ba9-438d-85ee-b3fc5ec0d777'
+  # 关闭安全验证,可以通过配置management.post控制只可以内网访问,这样就可以相对安全并且不用进行验证
+  security:
+    enabled: false
+eureka:
+  instance:
+    #这里注意修改host文件,添加127.0.0.1 eureka-registry-server-peer2和127.0.0.1 eureka-registry-server-peer1
+    hostname: eureka-registry-server-peer1
+    prefer-ip-address: false
+    metadata-map:
+       cluster: throwable:eureka-registry-server
+       management:
+           port: ${management.port}
+           context-path: ${management.context-path}
+           health:
+             path: ${management.context-path}/health
+    status-page-url-path: /info
+    health-check-url-path: /health
+  client:
+    service-url:
+      defaultZone: 'http://eureka-registry-server-peer2:9092/eureka/'
+    fetch-registry: true
+    register-with-eureka: true
+  server:
+    renewal-percent-threshold: '0.8'
+spring:
+  application:
+    name: 'eureka-registry-server'
