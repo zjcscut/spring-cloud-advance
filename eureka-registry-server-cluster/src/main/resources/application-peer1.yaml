@@ -30,3 +30,7 @@ eureka:
 spring:
   application:
     name: 'eureka-registry-server'
+info:
+  application:
+    name: 'eureka-registry-server'
+    jdk: 1.8

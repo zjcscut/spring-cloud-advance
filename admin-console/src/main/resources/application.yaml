@@ -1,0 +1,12 @@
+server:
+   port: 9093
+eureka:
+  client:
+    service-url:
+       defaultZone: 'http://eureka-registry-server-peer1:9091/eureka/'
+management:
+  security:
+      enabled: false
+spring:
+  application:
+    name: admin-console

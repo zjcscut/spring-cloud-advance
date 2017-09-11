@@ -1,0 +1,16 @@
+server:
+   port: 9094
+eureka:
+  client:
+    service-url:
+       defaultZone: 'http://eureka-registry-server-peer1:9091/eureka/'
+management:
+  security:
+      enabled: false
+spring:
+  application:
+    name: user-ms
+  boot:
+    admin:
+      #这个就是注册到SpringBootAdmin服务器的Url
+      url: http://localhost:9093
