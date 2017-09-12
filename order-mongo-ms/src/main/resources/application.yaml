@@ -1,0 +1,8 @@
+server:
+  port: 9095
+spring:
+  data:
+    mongodb:
+      database: t_order
+      host: localhost
+      port: 27017
