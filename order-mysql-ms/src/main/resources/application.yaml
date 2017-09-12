@@ -1,15 +1,8 @@
 server:
-   port: 9094
-eureka:
-  client:
-    service-url:
-       defaultZone: 'http://eureka-registry-server-peer1:9091/eureka/'
-management:
-  security:
-      enabled: false
+  port: 9096
 spring:
   application:
-    name: user-ms
+    name: order-mysql-ms
   boot:
     admin:
         #这个就是注册到SpringBootAdmin服务器的Url

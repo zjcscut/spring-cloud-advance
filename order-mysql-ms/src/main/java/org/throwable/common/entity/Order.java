@@ -1,6 +1,7 @@
 package org.throwable.common.entity;
 
 import lombok.Data;
+import lombok.ToString;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -9,18 +10,17 @@ import java.util.Date;
  * @author throwable
  * @version v1.0
  * @description
- * @since 2017/9/12 10:15
+ * @since 2017/9/12 11:29
  */
 @Data
-public class User implements Serializable{
-
+@ToString
+public class Order implements Serializable{
 
     private static final long serialVersionUID = -1L;
     private Long id;
-    private String name;
-
-    private Long balance;
+    private String orderCode;
+    private Long userId;
+    private Long amount;
     private Date createTime;
     private Integer status;
-
 }

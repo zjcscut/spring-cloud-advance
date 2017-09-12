@@ -12,6 +12,7 @@
         <module>zuul-gateway</module>
         <module>order-ms</module>
         <module>ms-core</module>
+        <module>rest-template-for-order-mysql-ms</module>
     </modules>
     <name>spring-cloud-advance</name>
 
