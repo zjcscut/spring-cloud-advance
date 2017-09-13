@@ -1,6 +1,7 @@
 package org.throwable.common;
 
 import lombok.Data;
+import lombok.ToString;
 
 /**
  * @author throwable
@@ -9,6 +10,7 @@ import lombok.Data;
  * @since 2017/9/12 17:50
  */
 @Data
+@ToString
 public class Response<T> {
 
     private Integer code;

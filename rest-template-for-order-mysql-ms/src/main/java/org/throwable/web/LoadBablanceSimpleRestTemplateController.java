@@ -27,40 +27,40 @@ import java.util.Map;
 @Controller
 public class LoadBablanceSimpleRestTemplateController {
 
-    private static final String APPLICATION_NAME = "order-mysql-ms";
+	private static final String APPLICATION_NAME = "order-mysql-ms";
 
-    @Autowired
-    @Qualifier(value = "loadBablanceSimpleRestTemplate")
-    private RestTemplate loadBablanceSimpleRestTemplate;
+	@Autowired
+	@Qualifier(value = "loadBalanceSimpleRestTemplate")
+	private RestTemplate loadBalanceSimpleRestTemplate;
 
-    @Autowired
-    private LoadBalancerClient loadBalancerClient;
+	@Autowired
+	private LoadBalancerClient loadBalancerClient;
 
 
-    @GetMapping(value = "/balance/get-order", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    @ResponseBody
-    public Response<Order> getOrder() {
-        String orderId = "93c449f4-6118-44c0-94a2-9fbf50c654ba";
-        Map<String, Object> uriVariables = new HashMap<>();
-        uriVariables.put("orderId", orderId);
-        String url = String.format("http://%s/order?orderId={orderId}", APPLICATION_NAME);
-        ResponseEntity<Response<Order>> exchange = loadBablanceSimpleRestTemplate.exchange(url, HttpMethod.GET, null,
-                new ParameterizedTypeReference<Response<Order>>() {
-                }, uriVariables);
-        return exchange.getBody();
-    }
+	@GetMapping(value = "/balance/get-order", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	@ResponseBody
+	public Response<Order> getOrder() {
+		String orderId = "93c449f4-6118-44c0-94a2-9fbf50c654ba";
+		Map<String, Object> uriVariables = new HashMap<>();
+		uriVariables.put("orderId", orderId);
+		String url = String.format("http://%s/order?orderId={orderId}", APPLICATION_NAME);
+		ResponseEntity<Response<Order>> exchange = loadBalanceSimpleRestTemplate.exchange(url, HttpMethod.GET, null,
+				new ParameterizedTypeReference<Response<Order>>() {
+				}, uriVariables);
+		return exchange.getBody();
+	}
 
-    @GetMapping(value = "/balance/info", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    @ResponseBody
-    public Response<String> info() {
-        Response<String> response = new Response<>();
-        String info = "";
-        ServiceInstance serviceInstance = loadBalancerClient.choose(APPLICATION_NAME);
-        if (null != serviceInstance) {
-            info = String.format("current serviceId:%s,host:%s,port:%s", serviceInstance.getServiceId(),
-                    serviceInstance.getHost(), serviceInstance.getPort());
-        }
-        response.setData(info);
-        return response;
-    }
+	@GetMapping(value = "/balance/info", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	@ResponseBody
+	public Response<String> info() {
+		Response<String> response = new Response<>();
+		String info = "";
+		ServiceInstance serviceInstance = loadBalancerClient.choose(APPLICATION_NAME);
+		if (null != serviceInstance) {
+			info = String.format("current serviceId:%s,host:%s,port:%s", serviceInstance.getServiceId(),
+					serviceInstance.getHost(), serviceInstance.getPort());
+		}
+		response.setData(info);
+		return response;
+	}
 }

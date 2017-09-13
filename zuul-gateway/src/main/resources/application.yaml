@@ -4,3 +4,12 @@ eureka:
   client:
     service-url:
        defaultZone: 'http://eureka-registry-server-peer1:9091/eureka/'
+zuul:
+  routes:
+    #所有进入本应用的/order/**的url将会路由到http://order-mysql-ms/
+    order-route:
+        path: /order/**
+        serviceId: order-mysql-ms
+spring:
+  application:
+    name: zuul-gateway

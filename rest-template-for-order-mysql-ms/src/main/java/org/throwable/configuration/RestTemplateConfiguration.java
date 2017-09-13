@@ -4,9 +4,11 @@ import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
+import org.springframework.core.task.SimpleAsyncTaskExecutor;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.http.client.OkHttp3ClientHttpRequestFactory;
 import org.springframework.http.client.SimpleClientHttpRequestFactory;
+import org.springframework.web.client.AsyncRestTemplate;
 import org.springframework.web.client.RestTemplate;
 
 /**
@@ -56,12 +58,23 @@ public class RestTemplateConfiguration {
 
 	@Bean
 	@LoadBalanced
-	public RestTemplate loadBablanceSimpleRestTemplate(){
+	public RestTemplate loadBalanceSimpleRestTemplate(){
 		RestTemplate restTemplate = new RestTemplate();
 		SimpleClientHttpRequestFactory requestFactory = new SimpleClientHttpRequestFactory();
 		requestFactory.setConnectTimeout(10000);
 		requestFactory.setConnectTimeout(10000);
 		restTemplate.setRequestFactory(requestFactory);
 		return restTemplate;
+	}
+
+	@Bean
+	public AsyncRestTemplate asyncRestTemplate(){
+		AsyncRestTemplate asyncRestTemplate = new AsyncRestTemplate();
+		SimpleClientHttpRequestFactory requestFactory = new SimpleClientHttpRequestFactory();
+		requestFactory.setConnectTimeout(10000);
+		requestFactory.setConnectTimeout(10000);
+		requestFactory.setTaskExecutor(new SimpleAsyncTaskExecutor()); //必须设置异步任务执行器
+		asyncRestTemplate.setAsyncRequestFactory(requestFactory);
+		return asyncRestTemplate;
 	}
 }
