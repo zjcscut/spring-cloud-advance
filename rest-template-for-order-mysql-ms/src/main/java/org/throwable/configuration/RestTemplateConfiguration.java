@@ -1,5 +1,6 @@
 package org.throwable.configuration;
 
+import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
@@ -53,4 +54,14 @@ public class RestTemplateConfiguration {
 		return restTemplate;
 	}
 
+	@Bean
+	@LoadBalanced
+	public RestTemplate loadBablanceSimpleRestTemplate(){
+		RestTemplate restTemplate = new RestTemplate();
+		SimpleClientHttpRequestFactory requestFactory = new SimpleClientHttpRequestFactory();
+		requestFactory.setConnectTimeout(10000);
+		requestFactory.setConnectTimeout(10000);
+		restTemplate.setRequestFactory(requestFactory);
+		return restTemplate;
+	}
 }

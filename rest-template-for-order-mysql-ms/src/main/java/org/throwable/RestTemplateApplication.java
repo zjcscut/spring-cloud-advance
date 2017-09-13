@@ -2,6 +2,7 @@ package org.throwable;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 
 /**
  * @author throwable
@@ -9,6 +10,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @description
  * @since 2017/9/12 22:20
  */
+@EnableEurekaClient
 @SpringBootApplication
 public class RestTemplateApplication {
 

@@ -5,7 +5,7 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.throwable.OrderMsApplication;
+import org.throwable.OrderMysqlMsApplication;
 import org.throwable.common.entity.Order;
 
 import java.util.Date;
@@ -16,7 +16,7 @@ import java.util.Date;
  * @description
  * @since 2017/9/12 11:45
  */
-@SpringBootTest(classes = OrderMsApplication.class)
+@SpringBootTest(classes = OrderMysqlMsApplication.class)
 @RunWith(SpringJUnit4ClassRunner.class)
 public class OrderDaoTest {
 

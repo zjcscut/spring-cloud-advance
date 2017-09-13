@@ -12,9 +12,9 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
  */
 @EnableEurekaClient
 @SpringBootApplication
-public class OrderMsApplication {
+public class OrderMysqlMsApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(OrderMsApplication.class, args);
+        SpringApplication.run(OrderMysqlMsApplication.class, args);
     }
 }

@@ -1,0 +1,9 @@
+eureka:
+  client:
+    service-url:
+       defaultZone: 'http://eureka-registry-server-peer1:9091/eureka/'
+server:
+  port: 9097
+spring:
+  application:
+    name: rest-template-for-order-mysql-ms
