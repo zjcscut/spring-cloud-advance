@@ -10,9 +10,12 @@
         <module>admin-console</module>
         <module>user-ms</module>
         <module>zuul-gateway</module>
-        <module>order-ms</module>
+        <module>order-mysql-ms</module>
+        <module>order-mongo-ms</module>
         <module>ms-core</module>
         <module>rest-template-for-order-mysql-ms</module>
+        <module>dynamic-zuul-gateway</module>
+        <module>dynamic-zuul-gateway-console</module>
     </modules>
     <name>spring-cloud-advance</name>
 

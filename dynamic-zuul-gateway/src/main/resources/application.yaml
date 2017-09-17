@@ -1,0 +1,14 @@
+server:
+  port: 9098
+eureka:
+  client:
+    service-url:
+       defaultZone: 'http://eureka-registry-server-peer1:9091/eureka/'
+spring:
+  application:
+    name: dynamic-zuul-gateway
+  datasource:
+    url: jdbc:mysql://localhost:3306/cloud_advance?useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull&useSSL=false
+    password: root
+    username: root
+    driver-class-name: com.mysql.jdbc.Driver
