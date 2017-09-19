@@ -1,4 +1,4 @@
-package org.throwable.common.dao;
+package org.throwable.zuul.dao;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
@@ -6,7 +6,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
-import org.throwable.common.entity.ZuulRouteEntity;
+import org.throwable.zuul.entity.ZuulRouteEntity;
 
 import java.sql.PreparedStatement;
 import java.sql.Statement;
@@ -52,4 +52,9 @@ public class ZuulRouteEntityDao {
         return jdbcTemplate.update(sql, zuulRouteEntity.getPath(), zuulRouteEntity.getServiceId(),
                 zuulRouteEntity.getUrl(), zuulRouteEntity.getStatus());
     }
+
+    public ZuulRouteEntity fetchById(Long id){
+		final String sql = "SELECT * FROM t_zuul_route WHERE id = ?";
+		return jdbcTemplate.queryForObject(sql,rowMapper, id);
+	}
 }

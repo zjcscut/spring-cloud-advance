@@ -1,8 +1,8 @@
-package org.throwable.common.entity;
+package org.throwable.zuul.entity;
 
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.Data;
-import org.throwable.common.utils.JacksonLocalDateTimeFormatter;
+import org.throwable.zuul.utils.JacksonLocalDateTimeFormatter;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
